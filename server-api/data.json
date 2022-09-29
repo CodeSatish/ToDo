@@ -1,0 +1,29 @@
+{
+  "tasks": [
+    {
+      "id": 1,
+      "task": "Buy fertilizers",
+      "completed": false
+    },
+    {
+      "id": 2,
+      "task": "Spray medicine",
+      "completed": false
+    },
+    {
+      "id": 3,
+      "task": "Complete Project",
+      "completed": true
+    },
+    {
+      "id": 4,
+      "task": "Hello Moto",
+      "completed": false
+    },
+    {
+      "id": 5,
+      "task": "Weeding",
+      "completed": true
+    }
+  ]
+}
