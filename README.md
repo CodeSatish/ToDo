@@ -1,2 +1,2 @@
 # ToDo
-ToDo with storybook vite and typescript
+ToDo with storybook vite and typescript.
