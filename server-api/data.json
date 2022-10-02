@@ -1,0 +1,24 @@
+{
+  "tasks": [
+    {
+      "id": 1,
+      "task": "Buy fertilizers",
+      "completed": false
+    },
+    {
+      "id": 4,
+      "task": "Hello Moto",
+      "completed": true
+    },
+    {
+      "id": 6,
+      "task": "Buy Dog",
+      "completed": true
+    },
+    {
+      "id": 7,
+      "task": "Paid Bills",
+      "completed": false
+    }
+  ]
+}
