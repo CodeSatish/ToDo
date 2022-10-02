@@ -1,32 +1,34 @@
 import React, { useState } from "react";
-import ToDoItem from "./ToDoItem";
+import styles from "../styles/style.module.css";
 
-function ToDo() {
-  const [task, setTask] = useState("");
-  const [taskList, setTaskList] = use;
+const ToDo = (props) => {
+  const [todo, setToDo] = useState("");
 
-  function handleAdd() {
-    console.log("Add click");
-  }
+  const handleChange = (e) => {
+    setToDo(e.target.value);
+    console.log("change", todo);
+  };
+
+  const handleAdd = () => {
+    console.log("Submit :", todo);
+    props.onClick && props.onClick(todo);
+  };
 
   return (
-    <div className='todoBox'>
-      <h4>why</h4>
-      <input
-        value={task}
-        type='text'
-        id='task'
-        placeholder='what you want to do?'
-        onChange={(e) => setTask(e.target.value)}
-      />
-      ;
-      <button id='btn' onClick={handleAdd}>
-        Add
-      </button>
-      ;
-      <ToDoItem />
+    <div>
+      <form onSubmit={handleAdd}>
+        <input
+          value={todo}
+          type='text'
+          id={styles["todo"]}
+          placeholder='what you want to do?'
+          onChange={handleChange}
+        />
+
+        <input className={styles.btn} type='submit' value='submit' />
+      </form>
     </div>
   );
-}
+};
 
 export default ToDo;

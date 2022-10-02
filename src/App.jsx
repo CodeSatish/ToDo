@@ -1,11 +1,11 @@
 import { useState, useEffect, Fragment } from "react";
 import api from "./api/todos";
-import ToDo1 from "./component/ToDo1";
+import ToDo from "./component/ToDo";
 import ToDoItem from "./component/ToDoItem";
 
-import "./styles/style.css";
+import styles from "./styles/style.module.css";
 
-function App() {
+const App = () => {
   const [theme, setTheme] = useState("light");
   const [tasks, setTasks] = useState([]);
 
@@ -15,6 +15,11 @@ function App() {
     return response.data;
   };
 
+  const getAllTasks = async () => {
+    const allTasks = await retriveTasks();
+    if (allTasks) setTasks(allTasks);
+  };
+
   useEffect(() => {
     const darkMode = window.matchMedia("(preferes-color-scheme: dark)").matches;
     setTheme(darkMode ? "dark" : "light");
@@ -22,16 +27,12 @@ function App() {
   }, []);
 
   useEffect(() => {
-    const getAllTasks = async () => {
-      const allTasks = await retriveTasks();
-      if (allTasks) setTasks(allTasks);
-    };
     getAllTasks();
   }, []);
 
   let toggleMode = theme;
 
-  function handleClick(e) {
+  const handleClick = (e) => {
     e.target.classList.remove(toggleMode);
     toggleMode = toggleMode == "dark" ? "light" : "dark";
     e.target.classList.add(toggleMode);
@@ -41,7 +42,7 @@ function App() {
     } else {
       document.body.setAttribute("data-theme", "");
     }
-  }
+  };
 
   const getId = () => {
     return tasks.length ? tasks[tasks.length - 1].id + 1 : 1;
@@ -79,11 +80,11 @@ function App() {
   };
 
   return (
-    <div className='main'>
-      <header>
+    <div className={styles.main}>
+      <header className={styles.appHeader}>
         <h1>To-Do</h1>
         <i
-          id='toggle'
+          id={styles["toggle"]}
           onClick={handleClick}
           className={`fa-solid ${
             toggleMode == "dark" ? "fa-toggle-on" : "fa-toggle-off"
@@ -91,9 +92,9 @@ function App() {
         ></i>
       </header>
 
-      <div className='content'>
-        <ToDo1 onClick={handleAddEvent} />
-        <ul className='todo-list'>
+      <div className={styles.content}>
+        <ToDo onClick={handleAddEvent} />
+        <ul className={styles.todoList}>
           {tasks.map((item) => (
             <ToDoItem
               item={item}
@@ -106,6 +107,6 @@ function App() {
       </div>
     </div>
   );
-}
+};
 
 export default App;

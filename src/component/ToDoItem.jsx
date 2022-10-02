@@ -1,15 +1,16 @@
 import React from "react";
+import styles from "../styles/style.module.css";
 
-function ToDoItem({ item, handleDelete, handleItemClick }) {
+const ToDoItem = ({ item, handleDelete, handleItemClick }) => {
   const itemId = 0;
   const itemTask = 1;
   const itemCompleted = 2;
 
   return (
-    <div className='list-item'>
+    <div className={styles.listItem}>
       <li
         onClick={() => handleItemClick(item.id)}
-        className={item.completed == true ? " strike" : ""}
+        className={item.completed ? styles["strike"] : styles[""]}
       >
         {item.task}
       </li>
@@ -19,6 +20,6 @@ function ToDoItem({ item, handleDelete, handleItemClick }) {
       ></button>
     </div>
   );
-}
+};
 
 export default ToDoItem;
