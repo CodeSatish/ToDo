@@ -1,16 +1,18 @@
 import React, { useState } from "react";
 import styles from "../styles/style.module.css";
+import { FormattedMessage, useIntl } from "react-intl";
 
 const ToDo = (props) => {
   const [todo, setToDo] = useState("");
+  const intl = useIntl();
 
   const handleChange = (e) => {
     setToDo(e.target.value);
-    console.log("change", todo);
   };
 
-  const handleAdd = () => {
-    console.log("Submit :", todo);
+  const handleAdd = (e) => {
+    e.preventDefault;
+    console.log("form submitted");
     props.onClick && props.onClick(todo);
   };
 
@@ -21,11 +23,15 @@ const ToDo = (props) => {
           value={todo}
           type='text'
           id={styles["todo"]}
-          placeholder='what you want to do?'
+          placeholder={intl.formatMessage({
+            id: "todo.text",
+            defaultMessage: "what you want to do?",
+          })}
           onChange={handleChange}
         />
-
-        <input className={styles.btn} type='submit' value='submit' />
+        <button className={styles.btn} type='submit'>
+          <FormattedMessage id='todo.btn' defaultMessage={"+ Task"} />
+        </button>
       </form>
     </div>
   );

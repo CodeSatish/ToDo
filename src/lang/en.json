@@ -1,0 +1,8 @@
+{
+    "app.header": "To-Do",
+    "app.title": "Sushant To-Do",
+    "app.channel.plug": "Tutorial by Lokalise",
+    "todo.btn": "+ Task",
+    "todo.text": "what you want to do?",
+    "todo.counter": "Total Tasks are {taskCount} currently"
+}

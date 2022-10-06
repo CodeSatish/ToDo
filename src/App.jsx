@@ -2,6 +2,7 @@ import { useState, useEffect, Fragment } from "react";
 import api from "./api/todos";
 import ToDo from "./component/ToDo";
 import ToDoItem from "./component/ToDoItem";
+import { FormattedMessage, FormattedNumber } from "react-intl";
 
 import styles from "./styles/style.module.css";
 
@@ -49,6 +50,7 @@ const App = () => {
   };
 
   const handleAddEvent = async (task) => {
+    console.log("enter in App");
     const request = {
       id: getId(),
       task: task,
@@ -82,7 +84,6 @@ const App = () => {
   return (
     <div className={styles.main}>
       <header className={styles.appHeader}>
-        <h1>To-Do</h1>
         <i
           id={styles["toggle"]}
           onClick={handleClick}
@@ -90,6 +91,21 @@ const App = () => {
             toggleMode == "dark" ? "fa-toggle-on" : "fa-toggle-off"
           }`}
         ></i>
+
+        <h1>
+          <FormattedMessage
+            id='app.header'
+            defaultMessage='To-Do'
+          ></FormattedMessage>
+        </h1>
+
+        <h3 className={styles.counter}>
+          <FormattedMessage
+            id='todo.counter'
+            defaultMessage={`Total counter is ${tasks.length} currently`}
+            values={{ taskCount: tasks.length }}
+          />
+        </h3>
       </header>
 
       <div className={styles.content}>
@@ -105,6 +121,14 @@ const App = () => {
           ))}
         </ul>
       </div>
+      <footer className={styles.footer}>
+        <p>
+          <FormattedMessage
+            id='app.channel.plug'
+            defaultMessage='Tutorial by Lokalise'
+          />
+        </p>
+      </footer>
     </div>
   );
 };

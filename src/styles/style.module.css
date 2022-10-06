@@ -31,22 +31,22 @@ body {
   background-color: var(--form-bg);
 }
 .main {
-  /* background-color: var(--form-bg); */
   color: var(--text-primary);
   display: flex;
   flex-direction: column;
-
   height: 100vh;
 }
 
 .appHeader {
   background-color: var(--background);
-  align-self: stretch;
+  /* align-self: stretch; */
+  display: flex;
+  justify-content: space-between;
 }
+
 header h1 {
   font-size: 3.2em;
   line-height: 1.1;
-  text-align: center;
   padding: 1rem;
   color: var(--text-primary);
 }
@@ -56,11 +56,17 @@ header h1 {
   padding-left: 1rem;
 }
 
+.counter {
+  padding-top: 2rem;
+  color: red;
+}
+
 .strike {
   text-decoration: line-through;
 }
 .content {
   align-self: center;
+  height: 100vh;
 }
 #todo {
   background-color: var(--list-color);
@@ -68,7 +74,7 @@ header h1 {
   border: none;
   padding: 0.5rem 0.75rem;
   margin: 0.5rem 0.5rem;
-  width: 20rem;
+  width: 18rem;
   border-radius: 7px;
   font-weight: 400;
 }
@@ -106,4 +112,23 @@ header h1 {
   list-style: none;
   display: flex;
   justify-content: space-between;
+}
+
+.footer {
+  width: 100vw;
+  background-color: var(--background);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 10vh;
+}
+
+@media (max-width: 375px) {
+  .appHeader {
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
+  .counter {
+    padding-top: 0%;
+  }
 }
