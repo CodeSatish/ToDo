@@ -17,12 +17,7 @@
     },
     {
       "id": 8,
-      "task": "Play games",
-      "completed": false
-    },
-    {
-      "id": 9,
-      "task": "Play games",
+      "task": "start TypeScript ",
       "completed": false
     }
   ]
